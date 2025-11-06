@@ -1,0 +1,10 @@
+problem statement:
+Make a  internal marks management system that helps teachers  to add, view, update, and delete student marks for different subjects and multiple internals. The system should store student and subject details, record marks for multiple internal exams, and  calculate the final marks by adding marks obtained in all internals for each student and subject. 
+
+Entities of the project:
+1.student
+2.teacher
+3.subject
+4.internals
+
+

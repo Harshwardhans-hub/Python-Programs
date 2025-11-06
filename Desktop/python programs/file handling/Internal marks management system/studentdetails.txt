@@ -1,0 +1,2 @@
+Harshwardhan,1,python
+Sunny,2,dbms

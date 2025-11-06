@@ -1,0 +1,7 @@
+print("a=12")
+print("b=4")
+print("c=16")
+print("d=8")
+print("e=3.0")
+print("f=3.0")
+print("g=0")

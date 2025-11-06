@@ -1,0 +1,3 @@
+{'sub_name':'hindi','sub_code':'111'}
+{'sub_name':'english','sub_code':'112'}
+{'sub_name':'maths','sub_code':'113'}
