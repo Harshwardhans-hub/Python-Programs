@@ -41,5 +41,22 @@ class TrieTests(unittest.TestCase):
             trie.insert(12)
 
 
+    def test_word_can_be_prefix_of_another_word(self):
+        trie = Trie()
+        trie.insert("car")
+        trie.insert("carpet")
+        self.assertTrue(trie.search("car"))
+        self.assertTrue(trie.starts_with("carp"))
+        self.assertEqual(trie.words_with_prefix("car"), ["car", "carpet"])
+
+    def test_trie_is_case_sensitive_and_empty_prefix_matches_all(self):
+        trie = Trie()
+        trie.insert("Apple")
+        trie.insert("apple")
+        self.assertFalse(trie.search("APPLE"))
+        self.assertEqual(trie.words_with_prefix(""), ["Apple", "apple"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
