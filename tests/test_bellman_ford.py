@@ -35,5 +35,18 @@ class BellmanFordTests(unittest.TestCase):
             bellman_ford({"s": [("t", True)]}, "s")
 
 
+    def test_non_negative_graph_matches_dijkstra(self):
+        from programs.graph_shortest_paths import dijkstra
+
+        graph = {
+            "s": [("a", 4), ("b", 5)],
+            "a": [("b", 2), ("t", 4)],
+            "b": [("t", 3)],
+            "t": [],
+        }
+        self.assertEqual(bellman_ford(graph, "s"), dijkstra(graph, "s"))
+
+
+
 if __name__ == "__main__":
     unittest.main()
