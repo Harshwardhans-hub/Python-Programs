@@ -31,5 +31,14 @@ class ExpressionUtilsTests(unittest.TestCase):
             evaluate_postfix([True])
 
 
+    def test_postfix_evaluation_respects_operand_order(self):
+        self.assertEqual(evaluate_postfix(["10", "3", "2", "/", "-"]), 8.5)
+
+    def test_postfix_rejects_code_like_strings_as_invalid_tokens(self):
+        with self.assertRaises(ValueError):
+            evaluate_postfix(["__import__('os')"])
+
+
+
 if __name__ == "__main__":
     unittest.main()
