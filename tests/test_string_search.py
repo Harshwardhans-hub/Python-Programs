@@ -20,5 +20,15 @@ class StringSearchTests(unittest.TestCase):
             find_all_occurrences(10, "1")
 
 
+    def test_empty_text_long_pattern_and_unicode(self):
+        self.assertEqual(find_all_occurrences("", "a"), [])
+        self.assertEqual(find_all_occurrences("ab", "abcd"), [])
+        self.assertEqual(find_all_occurrences("café café", "café"), [0, 5])
+
+    def test_prefix_fallback_finds_match_after_partial_overlap(self):
+        self.assertEqual(find_all_occurrences("bacbabababacaca", "ababaca"), [6])
+
+
+
 if __name__ == "__main__":
     unittest.main()
