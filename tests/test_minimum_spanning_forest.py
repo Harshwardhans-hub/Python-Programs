@@ -36,5 +36,14 @@ class MinimumSpanningForestTests(unittest.TestCase):
             minimum_spanning_forest([], [(1, 2, True)])
 
 
+    def test_accepts_generator_inputs(self):
+        vertices = (value for value in [1, 2, 3])
+        edges = (edge for edge in [(1, 2, 3), (2, 3, 4), (1, 3, 10)])
+        selected, total = minimum_spanning_forest(vertices, edges)
+        self.assertEqual(total, 7)
+        self.assertEqual(len(selected), 2)
+
+
+
 if __name__ == "__main__":
     unittest.main()
