@@ -30,5 +30,12 @@ class RomanNumeralTests(unittest.TestCase):
             to_roman(True)
 
 
+    def test_round_trip_for_entire_supported_domain(self):
+        for number in range(1, 4000):
+            with self.subTest(number=number):
+                self.assertEqual(from_roman(to_roman(number)), number)
+
+
+
 if __name__ == "__main__":
     unittest.main()
