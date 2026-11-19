@@ -40,7 +40,7 @@ class NumberUtilsTests(unittest.TestCase):
 
 class TextUtilsTests(unittest.TestCase):
     def test_normalize_whitespace(self):
-        self.assertEqual(normalize_whitespace("  hello\\n\\tworld  "), "hello world")
+        self.assertEqual(normalize_whitespace("  hello" + chr(10) + chr(9) + "world  "), "hello world")
 
     def test_palindrome_ignores_punctuation_and_case(self):
         self.assertTrue(is_palindrome("A man, a plan, a canal: Panama!"))
@@ -54,7 +54,7 @@ class FileUtilsTests(unittest.TestCase):
     def test_count_lines_and_find_text(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "sample.txt"
-            path.write_text("First line\\n\\nSecond Line\\n", encoding="utf-8")
+            path.write_text("First line" + chr(10) + chr(10) + "Second Line" + chr(10), encoding="utf-8")
             self.assertEqual(count_lines(path), 3)
             self.assertEqual(count_lines(path, include_blank=False), 2)
             self.assertEqual(find_in_file(path, "second", case_sensitive=False), [(3, "Second Line")])
