@@ -32,5 +32,5 @@ def find_in_file(
         for line_number, line in enumerate(source, start=1):
             candidate = line if case_sensitive else line.casefold()
             if target in candidate:
-                matches.append((line_number, line.rstrip("\\r\\n")))
+                matches.append((line_number, line.rstrip("\r\n")))
     return matches
