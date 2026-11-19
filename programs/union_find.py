@@ -1,7 +1,7 @@
 """Disjoint-set union (union-find) with path compression and union by rank."""
 
 from collections.abc import Iterable
-from typing import Hashable, TypeVar
+from typing import Generic, Hashable, TypeVar
 
 T = TypeVar("T", bound=Hashable)
 
