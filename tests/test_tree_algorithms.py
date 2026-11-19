@@ -31,5 +31,12 @@ class TreeAlgorithmTests(unittest.TestCase):
         self.assertEqual(diameter(None), 0)
 
 
+    def test_empty_and_single_node_tree_metrics(self):
+        self.assertTrue(is_symmetric(None))
+        self.assertTrue(is_balanced(BinaryTreeNode(7)))
+        self.assertEqual(diameter(BinaryTreeNode(7)), 0)
+
+
+
 if __name__ == "__main__":
     unittest.main()
