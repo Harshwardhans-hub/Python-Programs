@@ -31,5 +31,14 @@ class SlidingWindowTests(unittest.TestCase):
         self.assertEqual(count_subarrays_with_sum([1, -1, 0], 0), 3)
 
 
+    def test_unicode_characters_are_counted_as_distinct_code_points(self):
+        self.assertEqual(longest_unique_substring_length("🙂a🙂b"), 3)
+
+    def test_zero_sum_subarrays_include_repeated_zero_prefixes(self):
+        self.assertEqual(count_subarrays_with_sum([0, 0], 0), 3)
+        self.assertEqual(count_subarrays_with_sum([], 0), 0)
+
+
+
 if __name__ == "__main__":
     unittest.main()
