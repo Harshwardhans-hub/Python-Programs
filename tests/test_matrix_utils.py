@@ -35,5 +35,24 @@ class MatrixUtilsTests(unittest.TestCase):
             transpose([[1, 2], [3]])
 
 
+    def test_operations_do_not_mutate_input_matrices(self):
+        first = [[1, 2], [3, 4]]
+        second = [[5, 6], [7, 8]]
+        first_before, second_before = [row[:] for row in first], [row[:] for row in second]
+
+        add_matrices(first, second)
+        multiply_matrices(first, second)
+        transpose(first)
+        rotate_clockwise(first)
+
+        self.assertEqual(first, first_before)
+        self.assertEqual(second, second_before)
+
+    def test_boolean_matrix_values_are_rejected(self):
+        with self.assertRaises(TypeError):
+            transpose([[True, 0]])
+
+
+
 if __name__ == "__main__":
     unittest.main()
