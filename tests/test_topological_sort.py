@@ -27,5 +27,15 @@ class TopologicalSortTests(unittest.TestCase):
             topological_sort({"a": ["b"], "b": ["c"], "c": ["a"]})
 
 
+    def test_returned_order_respects_every_edge_with_repeated_dependencies(self):
+        graph = {"a": ["c", "c"], "b": ["c"], "c": ["d"], "d": []}
+        order = topological_sort(graph)
+        positions = {node: index for index, node in enumerate(order)}
+        for source, neighbors in graph.items():
+            for target in neighbors:
+                self.assertLess(positions[source], positions[target])
+
+
+
 if __name__ == "__main__":
     unittest.main()
