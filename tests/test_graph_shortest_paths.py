@@ -28,5 +28,23 @@ class DijkstraTests(unittest.TestCase):
             dijkstra({"A": [("B", "heavy")]}, "A")
 
 
+    def test_zero_weight_and_tied_paths_are_supported(self):
+        graph = {
+            "start": [("left", 1), (1, 1), ("free", 0)],
+            "left": [("finish", 0)],
+            1: [("finish", 0)],
+            "free": [],
+            "finish": [],
+        }
+        self.assertEqual(
+            dijkstra(graph, "start"),
+            {"start": 0, "left": 1, 1: 1, "free": 0, "finish": 1},
+        )
+
+    def test_unknown_start_is_a_valid_singleton_result(self):
+        self.assertEqual(dijkstra({}, "outside"), {"outside": 0})
+
+
+
 if __name__ == "__main__":
     unittest.main()
