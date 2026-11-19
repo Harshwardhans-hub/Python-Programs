@@ -26,5 +26,18 @@ class BitwiseUtilsTests(unittest.TestCase):
             is_power_of_two(True)
 
 
+    def test_large_integer_and_empty_sequence_boundaries(self):
+        self.assertEqual(count_set_bits(1 << 80), 1)
+        self.assertEqual(single_number([]), 0)
+        self.assertFalse(is_power_of_two(3 * (1 << 20)))
+
+    def test_single_number_validates_each_value(self):
+        with self.assertRaises(ValueError):
+            single_number([1, -1, 2])
+        with self.assertRaises(TypeError):
+            single_number([1, True])
+
+
+
 if __name__ == "__main__":
     unittest.main()
