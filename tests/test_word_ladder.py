@@ -18,7 +18,7 @@ class WordLadderTests(unittest.TestCase):
         self.assertEqual(word_ladder_length("same", "same", []), 1)
 
     def test_dictionary_words_of_other_lengths_are_ignored(self):
-        self.assertEqual(word_ladder_length("a", "c", ["long", "b", "c"]), 3)
+        self.assertEqual(word_ladder_length("a", "c", ["long", "b", "c"]), 2)
 
     def test_invalid_endpoint_and_dictionary_inputs_are_rejected(self):
         with self.assertRaises(ValueError):
