@@ -28,5 +28,21 @@ class MathAlgorithmTests(unittest.TestCase):
             modular_power(2, 3, 0)
 
 
+    def test_prime_and_modular_helpers_cover_boundaries(self):
+        self.assertEqual(sieve_primes(2), [2])
+        self.assertEqual(sieve_primes(0), [])
+        self.assertEqual(modular_power(-2, 5, 13), 7)
+        self.assertEqual(modular_power(123, 5, 1), 0)
+
+    def test_integer_only_arguments_reject_booleans_and_floats(self):
+        with self.assertRaises(TypeError):
+            sieve_primes(True)
+        with self.assertRaises(TypeError):
+            prime_factorization(2.0)
+        with self.assertRaises(TypeError):
+            modular_power(2, True, 7)
+
+
+
 if __name__ == "__main__":
     unittest.main()
