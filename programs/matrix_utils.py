@@ -61,4 +61,4 @@ def multiply_matrices(first: Matrix, second: Matrix) -> list[list[Real]]:
 
 def rotate_clockwise(matrix: Matrix) -> list[list[Real]]:
     """Return a 90-degree clockwise rotation of a rectangular matrix."""
-    return [list(row) for row in reversed(transpose(matrix))]
+    return [list(reversed(row)) for row in transpose(matrix)]
