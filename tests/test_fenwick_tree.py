@@ -37,5 +37,18 @@ class FenwickTreeTests(unittest.TestCase):
             tree.range_sum(1, 0)
 
 
+    def test_sequential_updates_match_naive_list_sums(self):
+        values = [3, -2, 7, 0, 5]
+        tree = FenwickTree(values)
+        operations = [(1, 4), (4, -3), (0, 8), (2, -6)]
+        for index, delta in operations:
+            values[index] += delta
+            tree.add(index, delta)
+            for start in range(len(values)):
+                for end in range(start, len(values)):
+                    self.assertEqual(tree.range_sum(start, end), sum(values[start:end + 1]))
+
+
+
 if __name__ == "__main__":
     unittest.main()
