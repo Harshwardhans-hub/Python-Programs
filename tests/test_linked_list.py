@@ -51,5 +51,15 @@ class SinglyLinkedListTests(unittest.TestCase):
         self.assertFalse(SinglyLinkedList())
 
 
+    def test_removing_only_node_resets_tail_before_append(self):
+        values = SinglyLinkedList(["only"])
+        self.assertTrue(values.remove_first("only"))
+        self.assertEqual(len(values), 0)
+        values.append("new tail")
+        self.assertEqual(values.to_list(), ["new tail"])
+        self.assertEqual(values.search("new tail"), 0)
+
+
+
 if __name__ == "__main__":
     unittest.main()
