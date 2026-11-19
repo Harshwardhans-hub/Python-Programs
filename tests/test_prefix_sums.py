@@ -29,5 +29,12 @@ class PrefixSumTests(unittest.TestCase):
             PrefixSum([1, "two"])
 
 
+    def test_negative_values_and_generator_input(self):
+        values = PrefixSum(value for value in [5, -2, 4, -7])
+        self.assertEqual(values.range_sum(0, 3), 0)
+        self.assertEqual(values.range_sum(1, 2), 2)
+
+
+
 if __name__ == "__main__":
     unittest.main()
