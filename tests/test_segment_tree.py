@@ -31,5 +31,18 @@ class SegmentTreeTests(unittest.TestCase):
             SegmentTree([True])
 
 
+    def test_repeated_replacements_match_naive_list_sums(self):
+        values = [4, -1, 8, 2, 0, 5, 3]
+        tree = SegmentTree(values)
+        replacements = [(0, 10), (3, -4), (6, 9), (2, 1)]
+        for index, value in replacements:
+            values[index] = value
+            tree.update(index, value)
+            for start in range(len(values)):
+                for end in range(start, len(values)):
+                    self.assertEqual(tree.range_sum(start, end), sum(values[start:end + 1]))
+
+
+
 if __name__ == "__main__":
     unittest.main()
