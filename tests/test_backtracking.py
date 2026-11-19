@@ -35,5 +35,20 @@ class BacktrackingTests(unittest.TestCase):
             solve_n_queens(2.5)
 
 
+    def test_empty_subset_input_has_one_empty_subset(self):
+        self.assertEqual(subsets([]), [[]])
+
+    def test_five_queens_solutions_have_no_column_or_diagonal_conflicts(self):
+        solutions = solve_n_queens(5)
+        self.assertEqual(len(solutions), 10)
+        for placement in solutions:
+            self.assertEqual(len(set(placement)), 5)
+            diagonals = [row - col for row, col in enumerate(placement)]
+            anti_diagonals = [row + col for row, col in enumerate(placement)]
+            self.assertEqual(len(set(diagonals)), 5)
+            self.assertEqual(len(set(anti_diagonals)), 5)
+
+
+
 if __name__ == "__main__":
     unittest.main()
