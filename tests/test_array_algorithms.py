@@ -25,5 +25,12 @@ class ArrayAlgorithmTests(unittest.TestCase):
             maximum_subarray_sum([1, "bad"])
 
 
+    def test_single_item_and_all_zero_product_cases(self):
+        self.assertEqual(product_except_self([9]), [1])
+        self.assertEqual(product_except_self([0, 0, 5]), [0, 0, 0])
+        self.assertEqual(move_zeros_to_end([]), [])
+
+
+
 if __name__ == "__main__":
     unittest.main()
