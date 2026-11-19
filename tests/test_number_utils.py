@@ -1,12 +1,12 @@
-"""Tests for integer math helpers."""
+"""Tests for the existing integer math helpers."""
 
 import unittest
 
 from programs.number_utils import (
+    fibonacci_terms,
     greatest_common_divisor,
     is_prime,
     least_common_multiple,
-    prime_factors,
 )
 
 
@@ -19,14 +19,16 @@ class NumberUtilsTests(unittest.TestCase):
         self.assertTrue(is_prime(97))
         self.assertFalse(is_prime(99))
 
-    def test_prime_factors_preserve_multiplicity(self):
-        self.assertEqual(prime_factors(360), [2, 2, 2, 3, 3, 5])
-        self.assertEqual(prime_factors(-12), [2, 2, 3])
-        self.assertEqual(prime_factors(1), [])
+    def test_fibonacci_terms_returns_requested_count(self):
+        self.assertEqual(fibonacci_terms(0), [])
+        self.assertEqual(fibonacci_terms(1), [0])
+        self.assertEqual(fibonacci_terms(7), [0, 1, 1, 2, 3, 5, 8])
 
-    def test_zero_has_no_finite_prime_factorization(self):
+    def test_fibonacci_terms_rejects_negative_and_non_integer_counts(self):
         with self.assertRaises(ValueError):
-            prime_factors(0)
+            fibonacci_terms(-1)
+        with self.assertRaises(TypeError):
+            fibonacci_terms(2.5)
 
     def test_gcd_and_lcm_handle_negative_and_zero_values(self):
         self.assertEqual(greatest_common_divisor(-54, 24), 6)
@@ -36,7 +38,6 @@ class NumberUtilsTests(unittest.TestCase):
     def test_helpers_reject_boolean_and_non_integer_inputs(self):
         for helper, args in (
             (is_prime, (True,)),
-            (prime_factors, (2.5,)),
             (greatest_common_divisor, (2, "4")),
             (least_common_multiple, (False, 4)),
         ):
