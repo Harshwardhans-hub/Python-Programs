@@ -24,5 +24,14 @@ class SequenceAlgorithmTests(unittest.TestCase):
         self.assertEqual(maximum_single_transaction_profit([]), 0)
 
 
+    def test_majority_element_singleton_and_empty_sequences(self):
+        self.assertEqual(majority_element([42]), 42)
+        self.assertIsNone(majority_element([]))
+
+    def test_consecutive_sequence_handles_negative_values_and_duplicates(self):
+        self.assertEqual(longest_consecutive_sequence_length([-3, -2, -2, -1, 7]), 3)
+
+
+
 if __name__ == "__main__":
     unittest.main()
