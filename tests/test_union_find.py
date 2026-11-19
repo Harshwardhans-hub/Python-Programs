@@ -36,5 +36,13 @@ class DisjointSetTests(unittest.TestCase):
         self.assertEqual(sets.component_count, 1)
 
 
+    def test_union_of_unseen_values_adds_then_connects_both(self):
+        sets = DisjointSet()
+        self.assertTrue(sets.union("left", "right"))
+        self.assertEqual(sets.component_count, 1)
+        self.assertTrue(sets.connected("left", "right"))
+
+
+
 if __name__ == "__main__":
     unittest.main()
