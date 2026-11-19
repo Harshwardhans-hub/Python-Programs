@@ -39,5 +39,14 @@ class DynamicProgrammingTests(unittest.TestCase):
             zero_one_knapsack([1], [1], -1)
 
 
+    def test_knapsack_supports_zero_weight_items_once(self):
+        self.assertEqual(zero_one_knapsack([0, 2], [4, 3], 2), 7)
+
+    def test_coin_change_with_empty_denominations(self):
+        self.assertEqual(minimum_coin_change([], 0), 0)
+        self.assertIsNone(minimum_coin_change([], 5))
+
+
+
 if __name__ == "__main__":
     unittest.main()
