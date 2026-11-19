@@ -34,5 +34,16 @@ class GreedyAlgorithmTests(unittest.TestCase):
             fractional_knapsack([1], [10, 20], 5)
 
 
+    def test_half_open_activity_intervals_allow_back_to_back_starts(self):
+        self.assertEqual(
+            select_activities([1, 2, 2], [2, 3, 4]),
+            [0, 2],
+        )
+
+    def test_fractional_knapsack_zero_capacity_returns_zero(self):
+        self.assertEqual(fractional_knapsack([2, 3], [4, 5], 0), 0.0)
+
+
+
 if __name__ == "__main__":
     unittest.main()
