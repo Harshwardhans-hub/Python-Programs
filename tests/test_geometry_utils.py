@@ -23,5 +23,19 @@ class GeometryUtilsTests(unittest.TestCase):
             euclidean_distance(("x", 0), (0, 0))
 
 
+    def test_zero_distance_and_degenerate_rectangle(self):
+        self.assertEqual(euclidean_distance((2, 2), (2, 2)), 0.0)
+        self.assertEqual(manhattan_distance((2, 2), (2, 2)), 0)
+        self.assertTrue(point_in_rectangle((2, 2), (2, 2), (2, 2)))
+        self.assertFalse(point_in_rectangle((2, 2), (2, 2), (2, 2), inclusive=False))
+
+    def test_coordinate_validation_rejects_booleans_and_wrong_dimensions(self):
+        with self.assertRaises(TypeError):
+            euclidean_distance((True, 0), (0, 0))
+        with self.assertRaises(ValueError):
+            manhattan_distance((0, 1, 2), (0, 0))
+
+
+
 if __name__ == "__main__":
     unittest.main()
