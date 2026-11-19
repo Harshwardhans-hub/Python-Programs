@@ -29,5 +29,17 @@ class IntervalUtilsTests(unittest.TestCase):
             merge_intervals([(1, 2, 3)])
 
 
+    def test_empty_and_zero_length_intervals(self):
+        self.assertEqual(merge_intervals([]), [])
+        self.assertEqual(merge_intervals([(2, 2), (2, 2), (-1, -1)]), [(-1, -1), (2, 2)])
+
+    def test_insert_does_not_mutate_original_intervals(self):
+        original = [(5, 7), (1, 2)]
+        snapshot = original.copy()
+        self.assertEqual(insert_interval(original, (2, 5)), [(1, 7)])
+        self.assertEqual(original, snapshot)
+
+
+
 if __name__ == "__main__":
     unittest.main()
