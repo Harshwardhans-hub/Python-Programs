@@ -33,5 +33,18 @@ class LRUCacheTests(unittest.TestCase):
             LRUCache(True)
 
 
+    def test_updating_an_existing_key_refreshes_its_recency(self):
+        cache = LRUCache(2)
+        cache.put("first", 1)
+        cache.put("second", 2)
+        cache.put("first", 10)
+        cache.put("third", 3)
+
+        self.assertEqual(cache.get("first"), 10)
+        self.assertIsNone(cache.get("second"))
+        self.assertEqual(cache.get("third"), 3)
+
+
+
 if __name__ == "__main__":
     unittest.main()
