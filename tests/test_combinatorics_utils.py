@@ -31,5 +31,17 @@ class CombinatoricsUtilsTests(unittest.TestCase):
             combinations([1], -1)
 
 
+    def test_combinations_preserve_positions_for_duplicate_values(self):
+        self.assertEqual(combinations(["x", "x"], 1), [["x"], ["x"]])
+        self.assertEqual(combinations([1, 2, 3], 3), [[1, 2, 3]])
+
+    def test_boolean_counts_are_not_accepted_as_integers(self):
+        with self.assertRaises(TypeError):
+            pascal_triangle(True)
+        with self.assertRaises(TypeError):
+            combinations([1, 2], False)
+
+
+
 if __name__ == "__main__":
     unittest.main()
