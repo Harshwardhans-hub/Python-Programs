@@ -26,5 +26,14 @@ class SortingAlgorithmTests(unittest.TestCase):
             self.assertEqual(sorter(["pear", "apple"]), ["apple", "pear"])
 
 
+    def test_sorts_handle_negative_values_and_many_duplicates(self):
+        values = [0, -1, 4, -1, 4, 4, -9, 0]
+        expected = [-9, -1, -1, 0, 0, 4, 4, 4]
+        for sorter in (bubble_sort, insertion_sort, selection_sort, quick_sort):
+            with self.subTest(sorter=sorter.__name__):
+                self.assertEqual(sorter(values), expected)
+
+
+
 if __name__ == "__main__":
     unittest.main()
