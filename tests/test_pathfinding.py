@@ -34,5 +34,16 @@ class PathfindingTests(unittest.TestCase):
             shortest_grid_path([[2]], (0, 0), (0, 0))
 
 
+    def test_single_row_corridor_returns_all_cells(self):
+        self.assertEqual(
+            shortest_grid_path([[0, 0, 0, 0]], (0, 0), (0, 3)),
+            [(0, 0), (0, 1), (0, 2), (0, 3)],
+        )
+
+    def test_path_does_not_move_diagonally(self):
+        self.assertIsNone(shortest_grid_path([[0, 1], [1, 0]], (0, 0), (1, 1)))
+
+
+
 if __name__ == "__main__":
     unittest.main()
