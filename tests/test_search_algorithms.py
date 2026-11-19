@@ -25,5 +25,12 @@ class SearchAlgorithmTests(unittest.TestCase):
             self.assertIsNone(search([5], 4))
 
 
+    def test_duplicate_run_crossing_search_blocks_returns_first_index(self):
+        values = [0, 1, 2, 3, 7, 7, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+        self.assertEqual(jump_search(values, 7), 4)
+        self.assertEqual(exponential_search(values, 7), 4)
+
+
+
 if __name__ == "__main__":
     unittest.main()
