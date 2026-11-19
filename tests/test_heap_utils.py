@@ -29,5 +29,16 @@ class HeapUtilsTests(unittest.TestCase):
         self.assertEqual(merge_sorted_sequences([1, 4], [2, 3], [], [5]), [1, 2, 3, 4, 5])
 
 
+    def test_heap_helpers_support_iterators_and_duplicate_values(self):
+        self.assertEqual(top_k_largest(iter([3, 3, 1, 2]), 3), [3, 3, 2])
+        self.assertEqual(kth_smallest(iter([4, 1, 1, 3]), 2), 1)
+
+    def test_merge_sorted_sequences_accepts_generators(self):
+        first = (value for value in [1, 4, 7])
+        second = (value for value in [2, 3, 8])
+        self.assertEqual(merge_sorted_sequences(first, second), [1, 2, 3, 4, 7, 8])
+
+
+
 if __name__ == "__main__":
     unittest.main()
