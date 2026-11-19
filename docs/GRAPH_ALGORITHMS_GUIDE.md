@@ -7,7 +7,7 @@ This repository includes several graph approaches. Choose based on the graph's s
 | Visit reachable vertices | BFS / DFS | Unweighted | O(V + E) |
 | Shortest paths from one source | Dijkstra | Non-negative weights | O((V + E) log V) with a binary heap |
 | Shortest paths with negative edges | Bellman–Ford | Negative weights allowed; reachable negative cycles rejected | O(VE) |
-| Dependency ordering | Kahn topological sort | Directed acyclic graph | O(V + E) |
+| Dependency ordering | Kahn topological sort | Directed acyclic graph | O(V + E) |\n| Detect directed / undirected cycles | DFS colors / disjoint set | Directed or undirected edge list | O(V + E) |\n| All-pairs shortest paths | Floyd–Warshall | Weighted graph; negative edges allowed without negative cycles | O(V³) |
 | Minimum spanning forest | Kruskal + disjoint set | Undirected weighted graph | O(E log E) |
 
 ## Examples
